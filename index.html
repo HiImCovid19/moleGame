@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>モグラたたかない</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body onload="start()">
+    <div id="wrap">
+    </div>
+    <script>
+        var wrap = document.getElementById('wrap');
+        var num = 5;
+        // class名　moleを取得
+        var mole = document.getElementsByClassName('mole');
+        // moleの鼻と口作成　moleShape
+        function moleShape(){
+            for( var i = 0; i < mole.length; i++) {
+                var fragment = document.createDocumentFragment();
+                var classList = ['mole_ground', 'mole_eye', 'mole_mouth'];
+                classList.forEach(function(classList) {
+                    var div = document.createElement('div');
+                    div.setAttribute('class',classList);
+                    fragment.appendChild(div);
+                });
+                mole[i].appendChild(fragment);
+            }
+        }
+        // 最初のもぐらdiv作成
+        function firstMakeMoler(n){
+            for( var i = 0; i < n; i++) {
+                var moleFragment = document.createDocumentFragment();
+                var moleDiv = document.createElement('div');
+                moleDiv.setAttribute('class', 'mole');
+                moleDiv.setAttribute('id', 'mole' + i);
+                moleDiv.setAttribute('onclick', 'change(' + i + ')');
+                moleFragment.appendChild(moleDiv);
+                wrap.appendChild(moleFragment);
+                moleShape();
+            }
+        }
+        // 次からのもぐらdiv作成
+        function makeMoler(n){
+            for( var i = 0; i < n; i++) {
+                var moleFragment = document.createDocumentFragment();
+                var moleDiv = document.createElement('div');
+                moleDiv.setAttribute('class', 'ground');
+                moleDiv.setAttribute('id', 'mole' + i);
+                moleDiv.setAttribute('onclick', 'change(' + i + ')');
+                moleFragment.appendChild(moleDiv);
+                wrap.appendChild(moleFragment);
+                moleShape();
+            }
+        }
+        firstMakeMoler(num);
+        
+        // 毎秒やる
+        var timer;
+        function start() {
+            timer = window.setInterval('tick()', 1000);
+        }
+        //停止させる
+        function stop(){
+            clearInterval(timer);
+        }
+        // 9つのうちのどれかのmoleをgroundにする
+        function tick(){
+            var i = Math.floor(Math.random()*num);
+            var e = document.getElementById('mole' + i);
+            e.setAttribute('class', 'ground');
+        }
+
+        // Id mole数字の classを moleにする
+        function change(n){
+            var e = document.getElementById('mole' + n);
+            e.setAttribute('class', 'mole')
+            // moleの鼻と口のdivを作る
+            moleShape();
+            // 全部出てきたら
+            if( mole.length > num-1 ){
+                stop();
+                
+                var cong = document.createElement('div');
+                cong.setAttribute('id', 'cong');
+
+                var congInner = document.createElement('div');
+                congInner.setAttribute('id', 'congInner')
+
+                var congTxt = document.createElement('p');
+                congTxt.textContent = 'おめでとう！';
+
+                var moleNumInput = document.createElement('input');
+                moleNumInput.setAttribute('id', 'moleNumber');
+                moleNumInput.setAttribute('type', 'number');
+                moleNumInput.setAttribute('value', num);
+
+                var moleButton = document.createElement('input');
+                moleButton.setAttribute('type', 'button');
+                moleButton.setAttribute('value', '匹でチャレンジ');
+                moleButton.setAttribute('onclick', 'restart()');
+                
+                var body = document.getElementsByTagName('body');
+                body[0].appendChild(cong);
+                cong.appendChild(congInner);
+                congInner.appendChild(congTxt);
+                congInner.appendChild(moleNumInput);
+                congInner.appendChild(moleButton);
+            }
+        }
+        // restart
+        function restart() {
+            // もぐら削除
+            while( wrap.firstChild ){
+                wrap.removeChild( wrap.firstChild );
+            }
+            
+            // 新規もぐら作成
+            const moleNumber = document.getElementById("moleNumber");
+            num = moleNumber.value;
+            makeMoler(num);
+
+            cong.remove();
+            start();
+        }
+    </script>
+</body>
+</html>

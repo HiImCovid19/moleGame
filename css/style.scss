@@ -1,0 +1,168 @@
+$primary: #dfb293;
+$secondary: #fff5ef;
+$tertiary: #2b4733;
+$quaternary: #608472;
+
+body {
+    background: $quaternary;
+}
+#wrap{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    > div {
+        margin: 10px;
+    }
+}
+.mole {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 120px;
+        height: 170px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        border: solid 10px $primary;
+        border-radius: 200px 200px 0 0;
+        background: $secondary;
+    }
+    .mole_ground {
+        position: absolute;
+        width: 200px;
+        height: 10px;
+        background: $primary;    
+        bottom: 0;
+    }
+    .mole_eye {
+        &::before {
+            display: block;
+            position: absolute;
+            content: "●";
+            color: $primary;
+            font-size: 1.3em;
+            position: absolute;
+            left: 30%;
+            top: 25%;
+            z-index: 1;
+        }
+        &::after {
+            display: block;
+            position: absolute;
+            content: "●";
+            color: $primary;
+            font-size: 1.3em;
+            position: absolute;
+            right: 30%;
+            top: 25%;
+            z-index: 1;
+        }
+    }
+    .mole_mouth {
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        margin: auto;
+        left: 0;
+        right: 0;
+        top: 43%;
+        background: $primary;
+        border-radius: 100%;
+        &::before{
+            content: "";
+            display: block;
+            position: absolute;
+            width: 62px;
+            height: 9px;
+            left: -18px;
+            top: 8px;
+            background: $primary;
+            transform: rotate(-20deg);
+        }
+        &::after{
+            content: "";
+            display: block;
+            position: absolute;
+            width: 62px;
+            height: 9px;
+            left: -18px;
+            top: 8px;
+            background: $primary;
+            transform: rotate(20deg);
+        }
+    }
+}
+.ground {
+    cursor: pointer;
+    width: 200px;
+    height: 200px;
+    position: relative;
+    &::after{
+        content: "";
+        display: block;
+        width: 200px;
+        height: 10px;
+        background: $primary;    
+        position: absolute;
+        bottom: 0;
+    }
+}
+#cong {
+    display: block;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: #00000000;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    #congInner {
+        position: absolute;
+        background: $tertiary;
+        color: $secondary;
+        font-weight: bold;
+        padding: 10px;
+        border-radius: 100px 0;
+        width: 50%;
+        height: fit-content;
+        text-align: center;
+        margin: auto;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 10;
+        p {
+            font-size: 25px;
+            margin: 20px 0 0;
+        }
+        input {
+            margin: 30px 2px;
+            font-size: 20px;
+            background: $secondary;
+            color: $tertiary;
+            border-radius: 10px;
+            padding: 10px;
+            font-weight: bold;
+        }
+        #moleNumber {
+            background: $secondary;
+            width: 25%;
+            padding: 13px;
+        }
+    }
+}

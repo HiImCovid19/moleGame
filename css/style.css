@@ -1,0 +1,168 @@
+@charset "UTF-8";
+body {
+  background: #608472;
+}
+
+#wrap {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+#wrap > div {
+  margin: 10px;
+}
+
+.mole {
+  width: 200px;
+  height: 200px;
+  position: relative;
+}
+.mole::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 120px;
+  height: 170px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border: solid 10px #dfb293;
+  border-radius: 200px 200px 0 0;
+  background: #fff5ef;
+}
+.mole .mole_ground {
+  position: absolute;
+  width: 200px;
+  height: 10px;
+  background: #dfb293;
+  bottom: 0;
+}
+.mole .mole_eye::before {
+  display: block;
+  position: absolute;
+  content: "●";
+  color: #dfb293;
+  font-size: 1.3em;
+  position: absolute;
+  left: 30%;
+  top: 25%;
+  z-index: 1;
+}
+.mole .mole_eye::after {
+  display: block;
+  position: absolute;
+  content: "●";
+  color: #dfb293;
+  font-size: 1.3em;
+  position: absolute;
+  right: 30%;
+  top: 25%;
+  z-index: 1;
+}
+.mole .mole_mouth {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 43%;
+  background: #dfb293;
+  border-radius: 100%;
+}
+.mole .mole_mouth::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 62px;
+  height: 9px;
+  left: -18px;
+  top: 8px;
+  background: #dfb293;
+  transform: rotate(-20deg);
+}
+.mole .mole_mouth::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 62px;
+  height: 9px;
+  left: -18px;
+  top: 8px;
+  background: #dfb293;
+  transform: rotate(20deg);
+}
+
+.ground {
+  cursor: pointer;
+  width: 200px;
+  height: 200px;
+  position: relative;
+}
+.ground::after {
+  content: "";
+  display: block;
+  width: 200px;
+  height: 10px;
+  background: #dfb293;
+  position: absolute;
+  bottom: 0;
+}
+
+#cong {
+  display: block;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: #00000000;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+#cong #congInner {
+  position: absolute;
+  background: #2b4733;
+  color: #fff5ef;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 100px 0;
+  width: 50%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  text-align: center;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 10;
+}
+#cong #congInner p {
+  font-size: 25px;
+  margin: 20px 0 0;
+}
+#cong #congInner input {
+  margin: 30px 2px;
+  font-size: 20px;
+  background: #fff5ef;
+  color: #2b4733;
+  border-radius: 10px;
+  padding: 10px;
+  font-weight: bold;
+}
+#cong #congInner #moleNumber {
+  background: #fff5ef;
+  width: 25%;
+  padding: 13px;
+}/*# sourceMappingURL=style.css.map */
